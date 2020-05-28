@@ -347,12 +347,12 @@ def do_scenario(total_shards, min_shards, annual_shard_failure_rate, shard_repla
         max_shards_assigned_per_server = min_shards_assigned_per_server
     else:
         max_shards_assigned_per_server = min_shards_assigned_per_server+1
-        
+    """    
     print("min_shards_assigned_per_server " , min_shards_assigned_per_server )
     print("max_shards_assigned_per_server ", max_shards_assigned_per_server)
     print("num_of_serveres_with_maxShardsAssignedPerServer: ", num_of_serveres_with_maxShardsAssignedPerServer)
     print("num_of_serveres_with_minShardsAssignedPerServer ", num_of_serveres_with_minShardsAssignedPerServer)
-    
+    """
     # l is the number of servers failures that can be survived assumming only servers with min_shards_assigned_per_server are failing 
     # if num_of_serveres_with_minShardsAssignedPerServer = 0, then we can survive all failures of servers who have min_shards_assigned_per_server
     
@@ -394,7 +394,6 @@ def do_scenario(total_shards, min_shards, annual_shard_failure_rate, shard_repla
         period_failure_prob = failure_ratio * binomial_probability(failed_servers, total_servers, failure_probability_per_period_server)
         period_cummulative_prob_server += period_failure_prob
 
-
     annual_loss_prob= probability_of_failure_in_any_period(period_cumulative_prob, num_periods)  
     annual_loss_prob_server = probability_of_failure_in_any_period(period_cummulative_prob_server, num_periods_server)
     nines_shards = '%d nines' % count_nines(annual_loss_prob)
@@ -419,9 +418,13 @@ def do_scenario(total_shards, min_shards, annual_shard_failure_rate, shard_repla
     
     total_durability = 1.0 - prob_of_system_failure
     nines_total = '%d nines' % count_nines(1- total_durability)
-    print("Total Durability with AND formola: " '%17.15f' %total_durability)
-    print('nines :' , nines_total) 
+    print("Total Durability: " '%17.15f' %total_durability)
+    """
+    Total Durability could be find using below formoula
     print("Total Durability (dur1 * dur2) " '%17.15f' % ((1.0 - annual_loss_prob)*(1.0- annual_loss_prob_server)))
+    """
+    print('nines :' , nines_total) 
+
     
     # Calculations (Table) for drive failure
     """
