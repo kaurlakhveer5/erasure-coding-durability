@@ -15,7 +15,7 @@ Data safety does not depend only upon single shards but also involve other facto
 such as server failure, rack failure, entire site going down etc. 
 
 What we would like to compute is the durability of data stored with erasure coding
-based on the durability of the individual shards and durability of servers.
+based on the durability of the individual shards and the durability of servers.
 The durability is the probability of not losing the data over a period of time.
 The period of time we use here is one year, resulting in annual durability.
   
