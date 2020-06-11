@@ -20,7 +20,7 @@ The durability is the probability of not losing the data over a period of time.
 The period of time we use here is one year, resulting in annual durability.
   
 Systems that use erasure coding to store data will replace shards or servers that 
-are lost. Once requrired compoenent is replaced, the data is fully intact again. 
+are lost. Once required components are replaced, the data is fully intact again. 
 Data is lost only when P+1 shards are all lost or # of servers that contain P+1 or more
 shards are lost at the same time, before they are replaced. 
 
